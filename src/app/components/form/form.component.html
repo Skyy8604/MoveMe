@@ -1,0 +1,13 @@
+<app-closest-stations></app-closest-stations>
+<form [formGroup]="journeyForm" style="width: 80%; margin: 0 10%;">
+  <div class="mb-3">
+    <label for="startingPoint" class="form-label">Starting Point</label>
+    <input formControlName="start" type="text" class="form-control" id="startingPoint" aria-describedby="startingPointHelp">
+    <div id="startingPointHelp" class="form-text">Where are you starting you trip? You can either enter a station or an address.</div>
+  </div>
+  <div class="mb-3">
+    <label for="destination" class="form-label">Destination</label>
+    <input formControlName="end" type="text" class="form-control" id="destination" aria-describedby="destinationHelp">
+    <div id="destinationHelp" class="form-text">Where do you want to go? You can either enter a station or an address.</div>
+  </div>
+</form>

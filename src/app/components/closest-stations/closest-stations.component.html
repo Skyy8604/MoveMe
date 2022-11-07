@@ -1,0 +1,4 @@
+<div style="width: 80%; margin: 5% 10%;">
+  <p class="fs-4 fw-bold text-decoration-underline"> Your closest stations:</p>
+  <p *ngFor="let station of closestStations" (click)="addLabelToForm(station.label)"> {{station.label}}: {{station.dist}}m away</p>
+</div>
