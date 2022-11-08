@@ -20,7 +20,7 @@ import { ClosestStationsComponent } from './components/closest-stations/closest-
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [FormComponent],
+  providers: [FormComponent, ConnectionsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

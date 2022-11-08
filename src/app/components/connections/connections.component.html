@@ -1,1 +1,22 @@
-<p>connections works!</p>
+<div style="width: 80%; margin: 1% 10%;">
+  <p class="fs-2 fw-bold">Your Connections:</p>
+</div>
+<div *ngFor="let connection of connections" id="accordion" style="width: 80%; margin: 1% 10%;">
+  <div class="card">
+    <div class="card-header mb-0" id="headingOne" data-toggle="collapse" [attr.data-target]="'#' + connection.id">
+        From <span class="fw-bold">'{{connection.from}}'</span>  to <span class="fw-bold">'{{connection.to}}'</span>, {{connection.duration / 60}} minutes, {{checkHowManyChanges(connection)}} changes
+    </div>
+
+    <div id="{{connection.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+        officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+        moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+        butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+        haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+

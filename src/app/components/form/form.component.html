@@ -1,13 +1,33 @@
 <app-closest-stations></app-closest-stations>
-<form [formGroup]="journeyForm" style="width: 80%; margin: 0 10%;">
-  <div class="mb-3">
+<form [formGroup]="journeyForm" (ngSubmit)="searchConnection()" style="width: 80%; margin: 0 10%;">
+  <!--  valid start-->
+  <div class="mb-3" *ngIf="isStartValid">
     <label for="startingPoint" class="form-label">Starting Point</label>
     <input formControlName="start" type="text" class="form-control" id="startingPoint" aria-describedby="startingPointHelp">
     <div id="startingPointHelp" class="form-text">Where are you starting you trip? You can either enter a station or an address.</div>
   </div>
-  <div class="mb-3">
+  <!--  invalid start-->
+  <div class="mb-3" *ngIf="!isStartValid">
+    <label for="validateStart" class="form-label">Starting Point</label>
+    <input formControlName="start" type="text" class="form-control is-invalid" id="validateStart" placeholder="{{invalid}}" required>
+    <div class="invalid-feedback">Your Starting Point is invalid</div>
+  </div>
+  <!--  valid destination-->
+  <div class="mb-3" *ngIf="isDestValid">
     <label for="destination" class="form-label">Destination</label>
     <input formControlName="end" type="text" class="form-control" id="destination" aria-describedby="destinationHelp">
     <div id="destinationHelp" class="form-text">Where do you want to go? You can either enter a station or an address.</div>
+    <div class="invalid-feedback">error</div>
+  </div>
+  <!--  invalid destination -->
+  <div class="mb-3" *ngIf="!isDestValid">
+    <label for="validateDestination" class="form-label">Destination</label>
+    <input formControlName="end" type="text" class="form-control is-invalid" id="validateDestination" placeholder="{{invalid}}" required>
+    <div class="invalid-feedback">Your Destination is invalid</div>
+  </div>
+  <div style="text-align: end">
+    <button class="btn btn-outline-primary" type="submit">Look for connections!</button>
   </div>
 </form>
+<app-connections *ngIf="connections"
+                 [connections]="connections"></app-connections>
