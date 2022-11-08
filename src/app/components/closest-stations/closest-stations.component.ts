@@ -10,18 +10,21 @@ import {FormComponent} from "../form/form.component";
 export class ClosestStationsComponent implements OnInit {
 
   public closestStations: any;
+  public err: any
 
   constructor(private locationService: LocationService, private formComponent: FormComponent) {
     this.closestStations = null;
+    this.err = null;
   }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
       this.locationService.getClosestStationToCoords(position.coords.latitude, position.coords.longitude, position.coords.accuracy).subscribe(
         (result) => {
-          this.closestStations = result.slice(0, 5);
-          console.log(this.closestStations);
-        });
+          this.closestStations = result.slice(0, 5); // show the first five results
+        })
+    }, (error) => {
+      this.err = error;
     })
   }
 

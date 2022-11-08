@@ -1,4 +1,4 @@
-p:hover {
+.hoverTextBold:hover {
   font-weight: bold;
   cursor: pointer;
 }
