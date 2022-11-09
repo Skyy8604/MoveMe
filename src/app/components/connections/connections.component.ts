@@ -29,4 +29,9 @@ export class ConnectionsComponent implements OnInit {
     return amntOfChanges;
   }
 
+  getJustTimeWithoutDate(dateTime: string): any {
+    let dateTimeArray = dateTime.split(' ');
+    return dateTimeArray.at(1)?.slice(0, 5);
+  }
+
 }

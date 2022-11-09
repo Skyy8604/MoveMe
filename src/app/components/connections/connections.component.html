@@ -7,7 +7,9 @@
   <div *ngFor="let connection of connections" id="accordion" style="margin: 1% 0;">
     <div class="card">
       <div class="card-header mb-0 hoverCursor" id="headingOne" data-toggle="collapse" [attr.data-target]="'#' + connection.id">
-        From <span class="fw-bold">'{{connection.from}}'</span>  to <span class="fw-bold">'{{connection.to}}'</span>, {{connection.duration / 60}} minutes, {{checkHowManyChanges(connection)}} changes
+        From <span class="fw-bold">'{{connection.from}}' at </span> <span class="fw-bold text-decoration-underline"> {{getJustTimeWithoutDate(connection.departure)}}</span>
+        to <span class="fw-bold">'{{connection.to}}' arrival </span> <span class="fw-bold text-decoration-underline"> {{getJustTimeWithoutDate(connection.arrival)}}</span>,
+        {{connection.duration / 60}} minutes, {{checkHowManyChanges(connection)}} changes
       </div>
 
       <div id="{{connection.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">

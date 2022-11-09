@@ -1,5 +1,17 @@
 <app-closest-stations></app-closest-stations>
-<form [formGroup]="journeyForm" (ngSubmit)="searchConnection()" style="width: 80%; margin: 0 10%;">
+<form [formGroup]="journeyForm" (ngSubmit)="searchConnection()" style="width: 80%; margin: 3% 10% 0 10%;">
+  <!--  time picker-->
+  <div class="mb-3">
+    <input formControlName="dateTime" type="datetime-local">
+    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio1" value="depart" style="margin-left: 2%">
+    <label class="form-check-label" for="radio1" style="margin-left: 1%">
+      departure
+    </label>
+    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio2" value="arrival" style="margin-left: 2%">
+    <label class="form-check-label" for="radio2" style="margin-left: 1%">
+      arrival
+    </label>
+  </div>
   <!--  valid start-->
   <div class="mb-3" *ngIf="isStartValid">
     <label for="startingPoint" class="form-label">Starting Point</label>
@@ -30,6 +42,10 @@
     <input formControlName="end" type="text" class="form-control is-invalid" id="validateDestination"
            placeholder="{{invalid}}" required>
     <div class="invalid-feedback">Your Destination is invalid</div>
+  </div>
+  <!-- if not all madatory fields are filled -->
+  <div *ngIf="!isFormFilled" class="text-danger fw-bold">
+    Please fill out all mandatory fields.
   </div>
   <div style="text-align: end">
     <button class="btn btn-outline-primary" type="submit">Look for connections!</button>
