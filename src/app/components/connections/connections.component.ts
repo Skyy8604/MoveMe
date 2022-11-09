@@ -1,6 +1,5 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {ConnectionsService} from "../../service/connections.service";
-import {Connection, ConnectionsResponseModel} from "../../model/connectionsResponse.model";
+import {Component, Input, OnInit} from '@angular/core';
+import {Connection} from "../../model/connectionsResponse.model";
 
 @Component({
   selector: 'app-connections',
@@ -10,8 +9,11 @@ import {Connection, ConnectionsResponseModel} from "../../model/connectionsRespo
 export class ConnectionsComponent implements OnInit {
 
   @Input('connections') connections: Connection[] | undefined;
+  @Input('isApiError') isApiError: boolean | undefined;
+  @Input('apiError') apiError: any;
 
-  constructor(private connectionsService: ConnectionsService) {
+
+  constructor() {
   }
 
   ngOnInit(): void {

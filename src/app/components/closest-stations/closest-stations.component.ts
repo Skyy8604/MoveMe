@@ -22,10 +22,8 @@ export class ClosestStationsComponent implements OnInit {
       this.locationService.getClosestStationToCoords(position.coords.latitude, position.coords.longitude, position.coords.accuracy).subscribe(
         (result) => {
           this.closestStations = result.slice(0, 5); // show the first five results
-        })
-    }, (error) => {
-      this.err = error;
-    })
+        }, (error) => this.err = error)
+    }, (error) => this.err = error)
   }
 
   addLabelToForm(label: string): void{

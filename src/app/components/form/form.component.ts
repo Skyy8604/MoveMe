@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ConnectionsComponent} from "../connections/connections.component";
 import {ConnectionsService} from "../../service/connections.service";
-import {ConnectionsResponseModel} from "../../model/connectionsResponse.model";
+import {Connection, ConnectionsResponseModel} from "../../model/connectionsResponse.model";
 
 @Component({
   selector: 'app-form',
@@ -15,6 +15,8 @@ export class FormComponent implements OnInit {
   public isStartValid = true;
   public isDestValid = true;
   public invalid: any;
+  public isApiError: any;
+  public apiError: any;
 
   constructor(private connectionsComponent: ConnectionsComponent, private connectionsService: ConnectionsService) {
     this.connections = null;
@@ -38,19 +40,15 @@ export class FormComponent implements OnInit {
       if (result.url) {
         this.isDestValid = true;
         this.isStartValid = true;
-        let index = 0;
-        result.connections.forEach((connecntion) => {  // every connection of a request needs a unique id so the cards can be (un-)collapsed correctly
-          connecntion.id = index;
-          index++;
-        })
-        this.connections = result.connections;
+        this.connections = this.giveUniqueIdToConnections(result);
       } else if (result.messages) {
         this.checkWhichFieldIsInvalid(result)
       } else {
-        console.log(result);
+        this.isApiError = true;
       }
     }, (error) => {
-      console.log(error.messages);
+      this.apiError = error;
+      this.isApiError = true;
     });
   }
 
@@ -64,6 +62,15 @@ export class FormComponent implements OnInit {
     } else if (this.invalid == this.journeyForm.controls['end'].getRawValue()) {
       this.isDestValid = false;
     }
+  }
+
+  private giveUniqueIdToConnections(result: ConnectionsResponseModel): Connection[] {  // every connection of a request needs a unique id so the cards can be (un-)collapsed correctly
+    let index = 0;
+    result.connections.forEach((connection) => {
+      connection.id = index;
+      index++;
+    });
+    return result.connections;
   }
 
 }
