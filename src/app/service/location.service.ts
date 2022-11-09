@@ -8,9 +8,11 @@ import {StationModel} from "../model/station.model";
 })
 export class LocationService {
 
+  private baseURL = 'https://fahrplan.search.ch/api/completion.json?latlon=';
+
   constructor(private http: HttpClient) { }
 
   public getClosestStationToCoords(lat: number, lon: number, acc: number): Observable<StationModel[]> {
-    return this.http.get<StationModel[]>('https://fahrplan.search.ch/api/completion.json?latlon=' + lat +',' + lon + '&accuracy=' + acc);
+    return this.http.get<StationModel[]>(this.baseURL + lat +',' + lon + '&accuracy=' + acc);
   }
 }

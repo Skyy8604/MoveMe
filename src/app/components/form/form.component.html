@@ -3,11 +3,13 @@
   <!--  time picker-->
   <div class="mb-3">
     <input formControlName="dateTime" type="datetime-local">
-    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio1" value="depart" style="margin-left: 2%">
+    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio1"
+           value="depart" style="margin-left: 2%">
     <label class="form-check-label" for="radio1" style="margin-left: 1%">
       departure
     </label>
-    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio2" value="arrival" style="margin-left: 2%">
+    <input class="form-check-input" type="radio" formControlName="departOrArrival" name="departOrArrival" id="radio2"
+           value="arrival" style="margin-left: 2%">
     <label class="form-check-label" for="radio2" style="margin-left: 1%">
       arrival
     </label>
@@ -15,11 +17,15 @@
   <!--  valid start-->
   <div class="mb-3" *ngIf="isStartValid">
     <label for="startingPoint" class="form-label">Starting Point</label>
-    <input formControlName="start" type="text" class="form-control" id="startingPoint"
-           aria-describedby="startingPointHelp">
+    <input list="startList" formControlName="start" type="text" class="form-control" id="startingPoint"
+           aria-describedby="startingPointHelp" (input)="onInputChange($event)">
     <div id="startingPointHelp" class="form-text">Where are you starting you trip? You can either enter a station or an
       address.
     </div>
+    <!-- suggestions -->
+    <datalist id="startList">
+      <option *ngFor="let suggestion of suggestions">{{suggestion.label}}</option>
+    </datalist>
   </div>
   <!--  invalid start-->
   <div class="mb-3" *ngIf="!isStartValid">
@@ -31,10 +37,14 @@
   <!--  valid destination-->
   <div class="mb-3" *ngIf="isDestValid">
     <label for="destination" class="form-label">Destination</label>
-    <input formControlName="end" type="text" class="form-control" id="destination" aria-describedby="destinationHelp">
+    <input list="destList" formControlName="end" type="text" class="form-control" id="destination"
+           aria-describedby="destinationHelp" (input)="onInputChange($event)">
     <div id="destinationHelp" class="form-text">Where do you want to go? You can either enter a station or an address.
     </div>
-    <div class="invalid-feedback">error</div>
+    <!-- suggestions -->
+    <datalist id="destList">
+      <option *ngFor="let suggestion of suggestions">{{suggestion.label}}</option>
+    </datalist>
   </div>
   <!--  invalid destination -->
   <div class="mb-3" *ngIf="!isDestValid">

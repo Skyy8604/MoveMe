@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {ConnectionsComponent} from "../connections/connections.component";
 import {ConnectionsService} from "../../service/connections.service";
 import {Connection, ConnectionsResponseModel} from "../../model/connectionsResponse.model";
+import {SuggestionService} from "../../service/suggestion.service";
 
 @Component({
   selector: 'app-form',
@@ -19,12 +20,15 @@ export class FormComponent implements OnInit {
   public isApiError: any;
   public apiError: any;
   public isFormFilled: boolean;
+  public suggestions: any;
 
-  constructor(private connectionsComponent: ConnectionsComponent, private connectionsService: ConnectionsService, private fb: FormBuilder) {
+  constructor(private connectionsComponent: ConnectionsComponent, private connectionsService: ConnectionsService,
+              private fb: FormBuilder, private suggestionsService: SuggestionService) {
     this.connections = null;
     this.invalid = null;
     this.journeyForm = null;
     this.isFormFilled = true;
+    this.suggestions = null;
   }
 
   ngOnInit(): void {
@@ -62,6 +66,16 @@ export class FormComponent implements OnInit {
 
   public addStationToStartPoint(label: string): void {
     this.journeyForm.controls['start'].setValue(label);
+  }
+
+  public onInputChange(event: any) {
+    this.getSuggestions(event.target.value);
+  }
+
+  private getSuggestions(input: string): void {
+    this.suggestionsService.getSuggestions(input).subscribe((result) => {
+      this.suggestions = result
+    });
   }
 
   private checkWhichFieldIsInvalid(result: ConnectionsResponseModel) {

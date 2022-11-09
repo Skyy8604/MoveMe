@@ -7,15 +7,13 @@ import { ConnectionsComponent } from './components/connections/connections.compo
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ClosestStationsComponent } from './components/closest-stations/closest-stations.component';
-import { SelectListComponent } from './components/select-list/select-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     ConnectionsComponent,
-    ClosestStationsComponent,
-    SelectListComponent
+    ClosestStationsComponent
   ],
   imports: [
     BrowserModule,
