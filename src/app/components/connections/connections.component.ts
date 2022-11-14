@@ -8,8 +8,8 @@ import {Connection} from "../../model/connectionsResponse.model";
 })
 export class ConnectionsComponent implements OnInit {
 
-  @Input('connections') connections: Connection[] | undefined;
-  @Input('isApiError') isApiError: boolean | undefined;
+  @Input('connections') connections: Connection[] = [];
+  @Input('isApiError') isApiError: boolean = false;
   @Input('apiError') apiError: any;
 
 
@@ -28,10 +28,4 @@ export class ConnectionsComponent implements OnInit {
     })
     return amntOfChanges;
   }
-
-  getJustTimeWithoutDate(dateTime: string): any {
-    let dateTimeArray = dateTime.split(' ');
-    return dateTimeArray.at(1)?.slice(0, 5);
-  }
-
 }

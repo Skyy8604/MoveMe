@@ -79,6 +79,7 @@ export class FormComponent implements OnInit {
   }
 
   private checkWhichFieldIsInvalid(result: ConnectionsResponseModel) {
+    console.log(result);
     let arrayOfMessage = result.messages.at(0)?.split(' ');
     if (arrayOfMessage) {
       this.invalid = arrayOfMessage.at(1)

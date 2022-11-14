@@ -46,6 +46,7 @@ export interface Leg {
   stopid: string,
   stops: Stop[],
   terminal: string,
+  track: string,
   tripid: string,
   type: string,
   type_name: string,
