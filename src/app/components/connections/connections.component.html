@@ -9,10 +9,10 @@
     <div class="card">
       <div class="card-header mb-0 hoverCursor" id="headingOne" data-toggle="collapse"
            [attr.data-target]="'#' + connection.id">
-        From <span class="fw-bold">'{{connection.from}}' at </span> <span
-        class="fw-bold text-decoration-underline"> {{connection.departure | date: 'HH:mm'}}</span>
-        to <span class="fw-bold">'{{connection.to}}' arrival </span> <span
-        class="fw-bold text-decoration-underline"> {{connection.arrival | date: 'HH:mm'}}</span>,
+        From <span class="fw-bold">'{{connection.from}}' at </span>
+        <span class="fw-bold text-decoration-underline"> {{connection.departure | date: 'HH:mm'}}</span> <br>
+        to <span class="fw-bold">'{{connection.to}}' arrival </span>
+        <span class="fw-bold text-decoration-underline"> {{connection.arrival | date: 'HH:mm'}}</span>,<br>
         {{connection.duration / 60}} minutes, {{checkHowManyChanges(connection)}} changes
       </div>
 
@@ -21,18 +21,18 @@
         <div class="card-body" *ngFor="let leg of connection.legs; let last = last">
           <div *ngIf="!last">
             <div *ngIf="leg.type == 'walk'">
-              {{leg.type}}
+              <img src="assets/walk.png" width="35">
+              Walk from '{{leg.name}}' to '{{leg.exit.name}}' {{getTimeDiff(leg.departure, leg.exit.arrival)}}
             </div>
             <div *ngIf="leg.type != 'walk'">
               <img src="assets/{{leg.type}}.png" width="35" alt="{{leg.type}}">
               <span class="fw-bold"> {{leg.line}} </span>  towards <span class="fw-bold">{{leg.terminal}}</span>
               <span *ngIf="leg.track">: departing on <span class="text-decoration-underline">Platform {{leg.track}} </span> </span> <br>
               {{leg.departure | date: 'HH:mm'}} <img src="assets/verticalBegin.png" width="10" style="margin-top: 1%"> {{leg.name}} <br>
-              <span style="margin-left: 3%" *ngIf="leg.stops.length > 0">{{leg.stops.length + 1}} Stops  <br> </span>
-              <span style="margin-left: 4%" *ngIf="leg.stops.length == 0"> Direct <br> </span>
-              {{leg.exit.arrival | date: 'HH:mm'}} <img src="assets/verticalEnd.png" width="10" style="margin-top: 1%">  {{leg.exit.name}}
+              <span style="margin-left: 1%" *ngIf="leg.stops.length > 0">{{leg.stops.length + 1}} Stops  <br> </span>
+              <span style="margin-left: 2%" *ngIf="leg.stops.length == 0"> Direct <br> </span>
+              {{leg.exit.arrival | date: 'HH:mm'}} <img src="assets/verticalEnd.png" width="10">  {{leg.exit.name}}
             </div>
-
           </div>
         </div>
       </div>
