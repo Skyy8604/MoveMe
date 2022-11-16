@@ -13,6 +13,6 @@ export class SuggestionService {
   constructor(private http: HttpClient) { }
 
   public getSuggestions(term: string): Observable<SuggestionsModel[]> {
-    return this.http.get<SuggestionsModel[]>(this.baseURL + term);
+    return this.http.get<SuggestionsModel[]>(`${this.baseURL}${term}`);
   }
 }

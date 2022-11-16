@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {ConnectionsComponent} from "../connections/connections.component";
 import {ConnectionsService} from "../../service/connections.service";
 import {Connection, ConnectionsResponseModel} from "../../model/connectionsResponse.model";
 import {SuggestionService} from "../../service/suggestion.service";
@@ -22,7 +21,7 @@ export class FormComponent implements OnInit {
   public isFormFilled: boolean;
   public suggestions: any;
 
-  constructor(private connectionsComponent: ConnectionsComponent, private connectionsService: ConnectionsService,
+  constructor(private connectionsService: ConnectionsService,
               private fb: FormBuilder, private suggestionsService: SuggestionService) {
     this.connections = null;
     this.invalid = null;
@@ -38,6 +37,7 @@ export class FormComponent implements OnInit {
       dateTime: [],
       departOrArrival: ['depart', Validators.required]
     })
+
   }
 
   searchConnection(): void {

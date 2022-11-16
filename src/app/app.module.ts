@@ -7,13 +7,17 @@ import { ConnectionsComponent } from './components/connections/connections.compo
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { ClosestStationsComponent } from './components/closest-stations/closest-stations.component';
+import {TimeDiffMinutes} from "./pipe/timeDiffMinutes";
+import {AmntOfChanges} from "./pipe/amntOfChanges";
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     ConnectionsComponent,
-    ClosestStationsComponent
+    ClosestStationsComponent,
+    TimeDiffMinutes,
+    AmntOfChanges
   ],
   imports: [
     BrowserModule,

@@ -30,8 +30,7 @@
   <!--  invalid start-->
   <div class="mb-3" *ngIf="!isStartValid">
     <label for="validateStart" class="form-label">Starting Point</label>
-    <input formControlName="start" type="text" class="form-control is-invalid" id="validateStart"
-           placeholder="{{invalid}}" required>
+    <input formControlName="start" type="text" class="form-control is-invalid" id="validateStart" required>
     <div class="invalid-feedback">Your Starting Point is invalid</div>
   </div>
   <!--  valid destination-->
@@ -49,8 +48,7 @@
   <!--  invalid destination -->
   <div class="mb-3" *ngIf="!isDestValid">
     <label for="validateDestination" class="form-label">Destination</label>
-    <input formControlName="end" type="text" class="form-control is-invalid" id="validateDestination"
-           placeholder="{{invalid}}" required>
+    <input formControlName="end" type="text" class="form-control is-invalid" id="validateDestination" required>
     <div class="invalid-feedback">Your Destination is invalid</div>
   </div>
   <!-- if not all madatory fields are filled -->

@@ -13,7 +13,7 @@
         <span class="fw-bold text-decoration-underline"> {{connection.departure | date: 'HH:mm'}}</span> <br>
         to <span class="fw-bold">'{{connection.to}}' arrival </span>
         <span class="fw-bold text-decoration-underline"> {{connection.arrival | date: 'HH:mm'}}</span>,<br>
-        {{connection.duration / 60}} minutes, {{checkHowManyChanges(connection)}} changes
+        {{connection.duration / 60}} minutes, {{connection | amntOfChanges}} changes
       </div>
 
       <div id="{{connection.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -22,7 +22,7 @@
           <div *ngIf="!last">
             <div *ngIf="leg.type == 'walk'">
               <img src="assets/walk.png" width="35">
-              Walk from '{{leg.name}}' to '{{leg.exit.name}}' {{getTimeDiff(leg.departure, leg.exit.arrival)}}
+              Walk from '{{leg.name}}' to '{{leg.exit.name}}' {{leg.departure | timeDiffMinutes: leg.exit.arrival}}
             </div>
             <div *ngIf="leg.type != 'walk'">
               <img src="assets/{{leg.type}}.png" width="35" alt="{{leg.type}}">

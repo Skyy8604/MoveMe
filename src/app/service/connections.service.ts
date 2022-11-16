@@ -15,11 +15,11 @@ export class ConnectionsService {
 
   public getConnection(from: string, to: string, dateTime: string, departOrArrival: string): Observable<ConnectionsResponseModel> {
     if (dateTime == null) {
-      return this.http.get<ConnectionsResponseModel>(this.baseURL + 'num=7&from=' + from + '&to=' + to);
+      return this.http.get<ConnectionsResponseModel>(`${this.baseURL}num=7&from=${from}&to=${to}`);
     } else {
       let dateTimeObject = this.changeDateTimeFormat(dateTime);
-      return this.http.get<ConnectionsResponseModel>(this.baseURL + 'pre=3&num=4&from=' + from + '&to=' + to + '&date='
-        + dateTimeObject.date + '&time=' + dateTimeObject.time + '&time_type=' + departOrArrival);
+      return this.http.get<ConnectionsResponseModel>(`${this.baseURL}pre=3&num=4&from=${from}&to=${to}&date=
+      ${dateTimeObject.date}&time=${dateTimeObject.time}&time_type=${departOrArrival}`);
     }
   }
 

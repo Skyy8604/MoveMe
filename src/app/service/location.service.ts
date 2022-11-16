@@ -13,6 +13,6 @@ export class LocationService {
   constructor(private http: HttpClient) { }
 
   public getClosestStationToCoords(lat: number, lon: number, acc: number): Observable<StationModel[]> {
-    return this.http.get<StationModel[]>(this.baseURL + lat +',' + lon + '&accuracy=' + acc);
+    return this.http.get<StationModel[]>(`${this.baseURL}${lat},${lon}&accuracy=${acc}`);
   }
 }
