@@ -1,11 +1,11 @@
-<div style="width: 80%; margin: 1% 10% 5% 10%;">
+<div class="divContainer">
   <p class="fs-2 fw-bold">Your Connections:</p>
   <div *ngIf="isApiError" class="text-danger fw-bold">
     The service is currently unavailable, please try again later. <br>
     Error: {{apiError}}
   </div>
   <!-- connection -->
-  <div *ngFor="let connection of connections" id="accordion" style="margin: 1% 0;">
+  <div *ngFor="let connection of connections" id="accordion" class="marginTopOne marginBottomOne">
     <div class="card">
       <div class="card-header mb-0 hoverCursor" id="headingOne" data-toggle="collapse"
            [attr.data-target]="'#' + connection.id">
@@ -21,16 +21,16 @@
         <div class="card-body" *ngFor="let leg of connection.legs; let last = last">
           <div *ngIf="!last">
             <div *ngIf="leg.type == 'walk'">
-              <img src="assets/walk.png" width="35">
+              <img src="assets/walk.png" width="35" alt="{{leg.type}}">
               Walk from '{{leg.name}}' to '{{leg.exit.name}}' {{leg.departure | timeDiffMinutes: leg.exit.arrival | minutesToHours}}
             </div>
             <div *ngIf="leg.type != 'walk'">
               <img src="assets/{{leg.type}}.png" width="35" alt="{{leg.type}}">
               <span class="fw-bold"> {{leg.line}} </span>  towards <span class="fw-bold">{{leg.terminal}}</span>
               <span *ngIf="leg.track">: departing on <span class="text-decoration-underline">Platform {{leg.track}} </span> </span> <br>
-              {{leg.departure | date: 'HH:mm'}} <img src="assets/verticalBegin.png" width="10" style="margin-top: 1%"> {{leg.name}} <br>
-              <span style="margin-left: 1%" *ngIf="leg.stops.length > 0">{{leg.stops.length + 1}} Stops  <br> </span>
-              <span style="margin-left: 2%" *ngIf="leg.stops.length == 0"> Direct <br> </span>
+              {{leg.departure | date: 'HH:mm'}} <img src="assets/verticalBegin.png" width="10" class="marginTopOne"> {{leg.name}} <br>
+              <span class="marginLeftOne" *ngIf="leg.stops.length > 0">{{leg.stops.length + 1}} Stops  <br> </span>
+              <span class="marginLeftTwo" *ngIf="leg.stops.length == 0"> Direct <br> </span>
               {{leg.exit.arrival | date: 'HH:mm'}} <img src="assets/verticalEnd.png" width="10">  {{leg.exit.name}}
             </div>
           </div>

@@ -1,3 +1,24 @@
 .hoverCursor:hover {
   cursor: pointer;
 }
+
+.divContainer {
+  width: 80%;
+  margin: 1% 10% 5% 10%;
+}
+
+.marginTopOne {
+  margin-top: 1%;
+}
+
+.marginBottomOne {
+  margin-bottom: 1%;
+}
+
+.marginLeftOne {
+  margin-left: 1%;
+}
+
+.marginLeftTwo {
+  margin-left: 2%;
+}

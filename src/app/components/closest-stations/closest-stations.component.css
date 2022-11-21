@@ -2,3 +2,8 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.divContainer {
+  width: 80%;
+  margin: 5% 10% 0 10%;
+}

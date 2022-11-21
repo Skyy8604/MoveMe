@@ -1,0 +1,16 @@
+.marginLeftOne {
+  margin-left: 1%;
+}
+
+.marginLeftTwo {
+  margin-left: 2%;
+}
+
+.formContainer {
+  width: 80%;
+  margin: 3% 10% 0 10%;
+}
+
+.alignEnd {
+  text-align: end;
+}
