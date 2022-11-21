@@ -10,7 +10,7 @@ import {Pipe, PipeTransform} from "@angular/core";
  */
 @Pipe({name: 'timeDiffMinutes'})
 export class TimeDiffMinutes implements PipeTransform {
-  transform(value: string, end: string): string {
+  transform(value: string, end: string): number {
     let timeStartHour = new Date(value).getHours();
     let timeStartMinutes = new Date(value).getMinutes();
     let timeEndHour = new Date(end).getHours();
@@ -19,28 +19,9 @@ export class TimeDiffMinutes implements PipeTransform {
     let hourDiff = timeEndHour - timeStartHour;
     let minuteDiff = timeEndMinutes - timeStartMinutes;
 
-    return this.checkHourAndMinDiff(hourDiff, minuteDiff, timeStartMinutes, timeEndMinutes);
-  }
-
-  private checkHourAndMinDiff(hourDiff: number, minuteDiff: number, timeStartMinutes: number, timeEndMinutes: number): string {
-    if (hourDiff == 0) {
-      return minuteDiff + ' minutes';
-    } else if (hourDiff >= 1) {
-      minuteDiff = (60 - timeStartMinutes) + timeEndMinutes;
-      if (minuteDiff > 59) {
-        minuteDiff -= 60;
-        if (minuteDiff >= 0 && minuteDiff <= 9) {
-          return hourDiff + ':0' + minuteDiff + 'h';
-        }
-        return hourDiff + ':' + minuteDiff + 'h';
-      }
-
-      return minuteDiff + ' minutes';
-
-    } else if (hourDiff < 0) {
+    if (hourDiff < 0) {
       hourDiff += 24;
-      return this.checkHourAndMinDiff(hourDiff, minuteDiff, timeStartMinutes, timeEndMinutes);
     }
-    return 'error';
+    return minuteDiff + hourDiff*60;
   }
 }

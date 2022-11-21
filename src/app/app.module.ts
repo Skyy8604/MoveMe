@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ClosestStationsComponent } from './components/closest-stations/closest-stations.component';
 import {TimeDiffMinutes} from "./pipe/timeDiffMinutes";
 import {AmntOfChanges} from "./pipe/amntOfChanges";
+import {MinutesToHours} from "./pipe/minutesToHours";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {AmntOfChanges} from "./pipe/amntOfChanges";
     ConnectionsComponent,
     ClosestStationsComponent,
     TimeDiffMinutes,
-    AmntOfChanges
+    AmntOfChanges,
+    MinutesToHours
   ],
   imports: [
     BrowserModule,

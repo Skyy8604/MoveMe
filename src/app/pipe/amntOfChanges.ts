@@ -5,7 +5,7 @@ import {Connection} from "../model/connectionsResponse.model";
  * Returns the amount of changes of a given connection
  * Takes a connection of type Connection.
  * Usage:
- *    connection | amntOfChanges
+ *    {{ connection | amntOfChanges }}
  */
 @Pipe({name: 'amntOfChanges'})
 export class AmntOfChanges implements PipeTransform {
