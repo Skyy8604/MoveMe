@@ -1,5 +1,5 @@
 <div class="divContainer">
-  <p class="fs-2 fw-bold">Your Connections:</p>
+  <p class="fs-2 fw-bold" *ngIf="connections.length > 0">Your Connections:</p>
   <div *ngIf="isApiError" class="text-danger fw-bold">
     The service is currently unavailable, please try again later. <br>
     Error: {{apiError}}
