@@ -1,9 +1,11 @@
 <div class="divContainer">
   <p class="fs-4 fw-bold text-decoration-underline"> Your closest stations:</p>
   <div *ngIf="closestStations">
-    <p *ngFor="let station of closestStations" (click)="addLabelToForm(station.label)" class="hoverTextBold"> {{station.label}}: {{station.dist}}m away</p>
+    <p *ngFor="let station of closestStations" (click)="addLabelToForm(station.label)"
+       class="hoverTextBold"> {{station.label}}: {{station.dist}}m away</p>
   </div>
   <div *ngIf="!closestStations && err">
-    <p>We weren't able to find your closest stations :( <br> <span class="text-danger fw-bold"> Error: {{err.message}}</span></p>
+    <p>We weren't able to find your closest stations :( <br> <span
+      class="text-danger fw-bold"> Error: {{err.message}}</span></p>
   </div>
 </div>

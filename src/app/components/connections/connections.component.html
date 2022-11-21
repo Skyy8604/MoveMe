@@ -22,13 +22,16 @@
           <div *ngIf="!last">
             <div *ngIf="leg.type == 'walk'">
               <img src="assets/walk.png" width="35" alt="{{leg.type}}">
-              Walk from '{{leg.name}}' to '{{leg.exit.name}}' {{leg.departure | timeDiffMinutes: leg.exit.arrival | minutesToHours}}
+              Walk from '{{leg.name}}' to '{{leg.exit.name}}
+              ' {{leg.departure | timeDiffMinutes: leg.exit.arrival | minutesToHours}}
             </div>
             <div *ngIf="leg.type != 'walk'">
               <img src="assets/{{leg.type}}.png" width="35" alt="{{leg.type}}">
-              <span class="fw-bold"> {{leg.line}} </span>  towards <span class="fw-bold">{{leg.terminal}}</span>
-              <span *ngIf="leg.track">: departing on <span class="text-decoration-underline">Platform {{leg.track}} </span> </span> <br>
-              {{leg.departure | date: 'HH:mm'}} <img src="assets/verticalBegin.png" width="10" class="marginTopOne"> {{leg.name}} <br>
+              <span class="fw-bold"> {{leg.line}} </span> towards <span class="fw-bold">{{leg.terminal}}</span>
+              <span *ngIf="leg.track">: departing on <span
+                class="text-decoration-underline">Platform {{leg.track}} </span> </span> <br>
+              {{leg.departure | date: 'HH:mm'}} <img src="assets/verticalBegin.png" width="10"
+                                                     class="marginTopOne"> {{leg.name}} <br>
               <span class="marginLeftOne" *ngIf="leg.stops.length > 0">{{leg.stops.length + 1}} Stops  <br> </span>
               <span class="marginLeftTwo" *ngIf="leg.stops.length == 0"> Direct <br> </span>
               {{leg.exit.arrival | date: 'HH:mm'}} <img src="assets/verticalEnd.png" width="10">  {{leg.exit.name}}

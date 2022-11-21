@@ -1,4 +1,4 @@
-export interface SuggestionsModel {
+export interface SuggestionModel {
   label: string,
   html: string,
   iconclass: string

@@ -4,6 +4,7 @@ import {ConnectionsService} from "../../service/connections.service";
 import {Connection, ConnectionsResponseModel} from "../../model/connectionsResponse.model";
 import {SuggestionService} from "../../service/suggestion.service";
 import {LocationService} from "../../service/location.service";
+import {SuggestionModel} from "../../model/suggestion.model";
 
 @Component({
   selector: 'app-form',
@@ -12,23 +13,18 @@ import {LocationService} from "../../service/location.service";
 })
 export class FormComponent implements OnInit {
 
-  public journeyForm: any;
-  public connections: any;
+  public journeyForm: any = null;
+  public connections: Connection[] = [];
   public isStartValid = true;
   public isDestValid = true;
-  public invalid: any;
-  public isApiError: any;
-  public apiError: any;
-  public isFormFilled: boolean;
-  public suggestions: any;
+  public invalid: any = null;
+  public isApiError: boolean = false;
+  public apiError: any = null;
+  public isFormFilled: boolean = true;
+  public suggestions: SuggestionModel[] = [];
 
   constructor(private connectionsService: ConnectionsService,
               private fb: FormBuilder, private suggestionsService: SuggestionService, private locationService: LocationService) {
-    this.connections = null;
-    this.invalid = null;
-    this.journeyForm = null;
-    this.isFormFilled = true;
-    this.suggestions = null;
   }
 
   ngOnInit(): void {
@@ -38,7 +34,7 @@ export class FormComponent implements OnInit {
       dateTime: [],
       departOrArrival: ['depart', Validators.required]
     })
-    navigator.geolocation.getCurrentPosition( (position) => {
+    navigator.geolocation.getCurrentPosition((position) => {
       this.locationService.getClosestStationToCoords(position.coords.latitude, position.coords.longitude, position.coords.accuracy).subscribe(
         (result) => {
           this.journeyForm.controls['start'].setValue(result.at(0)?.label);

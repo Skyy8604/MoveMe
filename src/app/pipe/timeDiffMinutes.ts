@@ -22,6 +22,6 @@ export class TimeDiffMinutes implements PipeTransform {
     if (hourDiff < 0) {
       hourDiff += 24;
     }
-    return minuteDiff + hourDiff*60;
+    return minuteDiff + hourDiff * 60;
   }
 }

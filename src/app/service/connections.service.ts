@@ -31,13 +31,12 @@ export class ConnectionsService {
     let dateTimeArray = dateTime.split('T');
 
     let date = dateTimeArray.at(0);
-    // @ts-ignore
-    let dateArray = date.split('-');
-    date = dateArray.at(2) + '.' + dateArray.at(1) + '.' + dateArray.at(0);
-    // @ts-ignore
-    dateTimeObject.time = dateTimeArray.at(1);
-    // @ts-ignore
-    dateTimeObject.date = date;
+    if (date) {
+      let dateArray = date.split('-');
+      date = dateArray.at(2) + '.' + dateArray.at(1) + '.' + dateArray.at(0);
+      dateTimeObject.date = date
+      dateTimeObject.time = dateTimeArray.at(1)!;
+    }
 
     return dateTimeObject;
   }

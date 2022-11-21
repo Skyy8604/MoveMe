@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {SuggestionsModel} from "../model/suggestions.model";
+import {SuggestionModel} from "../model/suggestion.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,10 @@ export class SuggestionService {
 
   private baseURL = 'https://fahrplan.search.ch/api/completion.json?term=';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  public getSuggestions(term: string): Observable<SuggestionsModel[]> {
-    return this.http.get<SuggestionsModel[]>(`${this.baseURL}${term}`);
+  public getSuggestions(term: string): Observable<SuggestionModel[]> {
+    return this.http.get<SuggestionModel[]>(`${this.baseURL}${term}`);
   }
 }

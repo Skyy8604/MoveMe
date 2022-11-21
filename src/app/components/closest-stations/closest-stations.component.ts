@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationService} from "../../service/location.service";
 import {FormComponent} from "../form/form.component";
+import {StationModel} from "../../model/station.model";
 
 @Component({
   selector: 'app-closest-stations',
@@ -9,12 +10,10 @@ import {FormComponent} from "../form/form.component";
 })
 export class ClosestStationsComponent implements OnInit {
 
-  public closestStations: any;
-  public err: any
+  public closestStations: StationModel[] = [];
+  public err: any = null;
 
   constructor(private locationService: LocationService, private formComponent: FormComponent) {
-    this.closestStations = null;
-    this.err = null;
   }
 
   ngOnInit(): void {
@@ -26,7 +25,7 @@ export class ClosestStationsComponent implements OnInit {
     }, (error) => this.err = error)
   }
 
-  addLabelToForm(label: string): void{
+  addLabelToForm(label: string): void {
     this.formComponent.addStationToStartPoint(label);
   }
 }
