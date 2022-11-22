@@ -4,7 +4,7 @@
     <p *ngFor="let station of closestStations" (click)="addLabelToForm(station.label)"
        class="hoverTextBold"> {{station.label}}: {{station.dist}}m away</p>
   </div>
-  <div *ngIf="!closestStations && err">
+  <div *ngIf="!closestStations || err">
     <p>We weren't able to find your closest stations :( <br> <span
       class="text-danger fw-bold"> Error: {{err.message}}</span></p>
   </div>
